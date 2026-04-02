@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:22-alpine AS builder
+FROM node:22 AS builder
 
 WORKDIR /app
 ENV NODE_ENV=production
@@ -10,10 +10,9 @@ RUN npm install
 
 COPY . .
 RUN npm run build
-RUN ls -la /app/dist
 
 # Stage 2: Production
-FROM node:22-alpine AS runner
+FROM node:22-slim AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production
