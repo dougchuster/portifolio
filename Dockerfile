@@ -2,13 +2,15 @@
 FROM node:22-alpine AS builder
 
 WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
 
 COPY package*.json ./
 RUN npm install
 
 COPY . .
 RUN npm run build
-RUN ls -la /app
+RUN ls -la /app/dist
 
 # Stage 2: Production
 FROM node:22-alpine AS runner
