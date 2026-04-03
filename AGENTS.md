@@ -1,5 +1,11 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+<!-- BEGIN:vinext-agent-rules -->
+# Vinext — Next.js API surface on Vite
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+This project uses vinext (Cloudflare), a drop-in replacement for Next.js that runs on Vite.
+
+- All `next/*` imports are automatically shimmed by vinext — no import rewrites needed.
+- App Router, Pages Router, RSC, Server Actions, and Middleware all work as-is.
+- Config: `next.config.ts` is compatible (vinext reads it directly).
+- Dev server: `vinext dev` (uses Vite under the hood).
+- Deploy: `vinext deploy` to Cloudflare Workers.
+<!-- END:vinext-agent-rules -->
